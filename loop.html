@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>My Friends List</h1>
+
+    <input id="friendInput" type="text" placeholder="Enter a name">
+    <button onclick="addFriend()">Add Friend</button>
+
+    <ul id="friendList"></ul>
+
+    <script>
+      // empty array to store friends
+      let friends = [];
+
+      // function to add friend
+      function addFriend() {
+        let name = document.getElementById("friendInput").value;
+        if (name === "") {
+          alert("Please enter a name!");
+          return;
+        }
+
+        // add name to array
+        friends.push(name);
+
+        // clear input
+        document.getElementById("friendInput").value = "";
+
+        // display all names
+        displayFriends();
+      }
+
+      function displayFriends() {
+        let list = document.getElementById("friendList");
+        list.innerHTML = "";
+
+        for (let i = 0; i < friends.length; i++) {
+          let item = document.createElement("li");
+          item.textContent = friends[i];
+          list.appendChild(item);
+        }
+      }
+    </script>
+  </body>
+</html>
